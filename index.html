@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Training Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        b
+        {
+            background-color: #090711;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        b .contact-info {
+            font-size: 14px;
+        }
+
+        b .logo {
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        /* Header Section */
+        header {
+            background-color: #0a0122;
+            color: white;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .contact-info {
+            font-size: 14px;
+        }
+
+        header .logo {
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav ul li {
+            display: inline;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to right, #ececec, #444);
+            color: white;
+            padding: 180px 10px;
+            background-image: url();
+            background-size: cover; /* You can change 'cover' to 'contain' or specify dimensions if needed */
+        }
+
+        .hero-content {
+            max-width: 70%;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        .hero-content p {
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+
+
+        .hero-image img {
+            max-width: 2000px;
+            border-radius: 10px;
+            size: 100%;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #232323;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+         /* Styling for the carousel indicators */
+         .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Space between the buttons */
+        }
+
+        /* Styling for each indicator button */
+        .carousel-indicators button {
+            border: 2px solid #fff; /* White border */
+            background-color: transparent; /* Transparent background */
+            width: 12px; /* Width of the button */
+            height: 12px; /* Height of the button */
+            border-radius: 50%; /* Circular button */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Active button style */
+        .carousel-indicators .active {
+            background-color: #007bff; /* Blue background for active button */
+            border-color: #007bff; /* Matching border color */
+        }
+
+        /* Hover effect */
+        .carousel-indicators button:hover {
+            background-color: #ddd; /* Light gray on hover */
+            border-color: #ddd; /* Matching border color */
+        }
+        /* Carousel container */
+        #demo {
+            max-width: 100%;
+            margin: auto;
+            position: relative;
+        }
+
+        /* Carousel image style */
+        .carousel-inner img {
+            width: 100%;
+            height: auto;
+            filter: brightness(0.7); /* Darken the image to create a more futuristic look */
+            border-radius: 10px;
+        }
+        .section {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Image Slider */
+        .image-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transform: translateX(100%);
+            animation: image-slide 24s linear infinite;
+        }
+
+        /* Animation for images */
+        @keyframes image-slide {
+            0% { transform: translateX(100%); opacity: 0; }
+            10% { transform: translateX(0); opacity: 1; }
+            40% { transform: translateX(0); opacity: 1; }
+            50% { transform: translateX(-100%); opacity: 0; }
+            60% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        /* Delays for each image */
+        .image-slider img:nth-child(1) { animation-delay: 0s; }
+        .image-slider img:nth-child(2) { animation-delay: 6s; }
+        .image-slider img:nth-child(3) { animation-delay: 12s; }
+        .image-slider img:nth-child(4) { animation-delay: 18s; }
+        
+        /* Hero Section */
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .hero-content h1, .hero-content p {
+            margin: 0;
+            padding: 0;
+            animation: text-slide 24s linear infinite;
+        }
+
+        /* Animation for the text moving left to right */
+        @keyframes text-slide {
+            0% { transform: translateX(100%); opacity: 0;}
+            10% { transform: translateX(0); opacity: 1; }
+            40% { transform: translateX(0); opacity: 0; }
+            50% { transform: translateX(0); opacity: 0; }
+            60% { transform: translateX(0); opacity: 0; }
+            100% { transform: translateX(0); opacity: 0; }
+        }
+
+        /* Button at the bottom center */
+        .hero-button {
+            background-color: #030a24;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: fixed; /* Fix the button position */
+            bottom: 30px; /* Positioned 30px from the bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
+            z-index: 100;
+        }
+
+        .hero-button:hover {
+            background-color: #45a049;
+        }
+         .container {
+            width: 100%;
+            max-width: 10000px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .about-us, .course-list {
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1 1 55%;
+            margin-right: 20px;
+        }
+
+        .about-images {
+            flex: 1 1 40%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: square;
+            margin: 10px 0;
+        }
+        #courses {
+            padding: 40px;
+            width: 100%;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .section-heading {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .course-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            max-width: 200px;
+            transition: transform 0.3s ease;
+        }
+        .course-item:hover {
+            transform: translateY(-10px);
+        }
+        .course-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .course-item h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .course-item button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .course-item button:hover {
+            background-color: #0056b3;
+        }
+
+        button {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .contact-us {
+            text-align: center;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            width: 100%; /* Corrected property */
+            background: #333;
+            color: #fff;
+        }
+        .container {
+            width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .highlight {
+            background-color: #e0f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .course-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        .course-card h3 {
+            color: #00796b;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .cta button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cta button:hover {
+            background-color: #004d40;
+        }
+        </style>
+</head>
+<body>
+    <b><div class="logo"> <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/telephone-handset.png" alt="telephone-handset"/>Ph:9952620470</div><div class="logo"> <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/gmail-logo.png" alt="gmail-logo"/>Gmail: skolatechacdemy@gmail.com</div></b>
+    <!-- Header Section -->
+    <header>
+        
+        <div class="logo">skola tech academy and it services</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#Certificates">Certificates</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <div class="section" id="home">
+        <!-- Image Slider -->
+        <div class="image-slider">
+            <img src="https://itbrief.com.au/uploads/story/2023/07/04/GettyImages-1468068287.webp" alt="Slide 1">
+            <img src="https://static.wixstatic.com/media/3a360e_c94b7781bbb94afe9ba063ae24bef8b8~mv2.jpg/v1/fill/w_974,h_510,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/full-stack-developer-training-course.jpg" alt="Full Stack Developer Course">
+            <img src="https://img.freepik.com/free-vector/futuristic-ai-technology-template-vector-disruptive-technology-blog-banner_53876-117833.jpg" alt="Course Image">
+
+        </div>
+    
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1 style="color: white;">A Great Place For Computer Training</h1>
+                <p>Learn industry-relevant skills to advance your career in technology. 
+                    <br><strong>Mission:</strong> To provide high-quality education for a modern workplace.
+                    <br><strong>Vision:</strong> To lead innovation in IT training.<br>
+                    <button 
+    style="background-color: #0a1129; color: rgb(253, 253, 253); padding: 15px 32px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" 
+    onmouseover="this.style.backgroundColor='#45a049'" 
+    onmouseout="this.style.backgroundColor='#0a1129'"
+    onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeqIQc7ndLFZt7ifvHJiaUnCg__ucPqOwKgOSw8mea3H6RF2w/viewform?usp=header';">
+    Join Now
+</button>
+  
+                </p>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container" id="about-us">
+        <!-- About Us Section -->
+        <div class="about-us">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>Skola Tech Academy & IT Services</strong> is a premier educational institution based in Madurai, Tamil Nadu. 
+                        Our mission is to equip learners with cutting-edge technical knowledge and practical skills, enabling them to 
+                        excel in the dynamic IT industry.
+                    </p>
+                    <p>We offer a diverse range of courses tailored to meet industry demands, including:</p>
+                    <ul>
+                        <li>Advanced Software Training in Data Analytics, Artificial Intelligence, Machine Learning, and Robotics.</li>
+                        <li>Design and Development programs such as UI/UX Design and Full Stack Web Development (MERN).</li>
+                        <li>Software and CAD Certifications in Python, Java, C/C++, AutoCAD, SolidWorks, and Fusion 360.</li>
+                        <li>Specialized Programs for TallyPrime, Excel, and Office Automation to enhance job-ready skills.</li>
+                    </ul>
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><strong>Industry-Experienced Trainers:</strong> Learn from professionals with real-world experience.</li>
+                        <li><strong>Practical Learning:</strong> Hands-on training with live projects and industry-standard tools.</li>
+                        <li><strong>Flexible Timings:</strong> Classes available on weekdays and weekends to fit your schedule.</li>
+                        <li><strong>Certifications:</strong> Earn completion certificates that boost your career prospects.</li>
+                        <li><strong>Placement Support:</strong> Assistance with internships and job placements in reputed organizations.</li>
+                    </ul>
+                    <h3>Our Facilities</h3>
+                    <ul>
+                        <li>Well-equipped computer labs with high-speed internet.</li>
+                        <li>Comfortable classrooms with modern teaching aids.</li>
+                        <li>Access to online resources and study materials.</li>
+                    </ul>
+                    <p>Join <strong>Skola Tech Academy & IT Services</strong> today and embark on your journey to a brighter future!</p>
+                </div>
+                <div class="about-images">
+                    <div class="about-image">
+                        <img src="data:image/jpeg;base64,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" alt="Image 1" />
+                    </div>
+                    <div class="about-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiz1-S1gh6fbtMLD5YUPNW_8w96YqW593m1tbc1q_NBmkKDzBQ43h3-7Us1m2-15C2Pbk&usqp=CAU" alt="Image 2" />
+                    </div>
+                    <div class="about-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMM9hCTwGuxbjZegt9lJq-yvaNGVYPoTEDHGtNZA3-qBEAQV72wmef1WL4f_fdcxR_I30&usqp=CAU" alt="Image 3" />
+                    </div>
+                    <div class="about-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjEOtSWmXw9hICmRMSicTWk3988DBZ6VymZ_JA46JTqvZEej6kL61T8QJ0shDtU7IKxiw&usqp=CAU" alt="Image 4" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="Certificates">
+            <h1 style="background-color: white;">A Great Place For Computer Training</h1>
+        
+            <p>At Skola Tech Academy & IT Services, we take pride in awarding internationally recognized certifications to our students.</p>
+            <p>Each certificate is accredited by multiple reputable organizations, including:</p>
+            
+            <div class="accreditations">
+                <ul>
+                    <li>ISO 9001:2015 Certification</li>
+                    <li>Ministry of MSME, Government of India</li>
+                    <li>International Accreditation Forum Membership</li>
+                </ul>
+            </div>
+        
+            <div class="highlight">
+                <h2>Global Recognition</h2>
+                <p>Certificates certified by Quality Control Certification and accredited by Ethiopian Accreditation Service.</p>
+            </div>
+        
+            <div class="highlight">
+                <h2>Comprehensive Assessment</h2>
+                <p>Graded on a detailed scale from Outstanding (AA) to Satisfactory (B).</p>
+            </div>
+        
+            <div class="highlight">
+                <h2>Credibility</h2>
+                <p>Backed by a legacy of professional training excellence.</p>
+            </div>
+        
+            <h2>📜 Courses That Earn You Prestigious Certifications</h2>
+            <div class="courses">
+                <div class="course-card">
+                    <h3>Advanced Certification in UI/UX Design</h3>
+                </div>
+                <div class="course-card">
+                    <h3>Certification Program in Python Programming</h3>
+                </div>
+                <div class="course-card">
+                    <h3>Certificate Course in Excel & Tally Prime</h3>
+                </div>
+                <div class="course-card">
+                    <h3>And many more career-focused programs!</h3>
+                </div>
+            </div>
+        
+            <h2>🖋 Certificate Highlights</h2>
+            <ul>
+                <li>Includes details of course completion, grades, and duration.</li>
+                <li>Authenticated by Er. K. Kameshwari, Director & Senior Tech Head.</li>
+                <li>Adds value to your professional portfolio, giving you an edge in competitive job markets.</li>
+            </ul>
+
+        <!-- Courses Section -->
+<section id="courses">
+    <h2 class="section-heading">Our Courses</h2>
+    <div class="course-list">
+        <!-- C Course -->
+        <div class="course-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkqtDMAjbPqrkE_avYA-b9o9E6nx_Ue3KoK9ux86mO6OxGJ_J4ddelBdcdwj1drDgTRMU&usqp=CAU" alt="C">
+            <h3>C Programming</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-c/';">Join Now</button>
+        </div>
+
+        <!-- C++ Course -->
+        <div class="course-item">
+            <img src="data:image/png;base64,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" alt="C++">
+            <h3>C++ Programming</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-c-/';">Join Now</button>
+        </div>
+
+        <!-- Java Course -->
+        <div class="course-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAwFBMVEX////KMTIxdLnJKCnIHyDx0dHHGRrJLC3Yd3ctcrjIJSbKLzApcLckbrfej48ebLbptbbGEBISaLT2+fzHGxz9+Pj78PCFp9HHExWfudrUZmbGCQz88/OVstbT3+7swMD24OC3yuNGgL/f6PNvmcrK2Oq7zeTDAADOR0j13t746OhOhcHq8Pd5n83RU1TMOzzbgYHlqKjim5xmk8fejI3SWFnXcnLuyMgAXrBbjMSswt/TYGHbgIHqubprlsnPS0sXHKrTAAANrUlEQVR4nO1daXuiPBSVXbZS44ZFXHCrVWvVqtV27P//V28W0IDaOqO8YB7Oh5kpGJ+cJrn33JtMbi6XIUOGDBkyZMiQ4Uo0k+5A7JDek+5B3KgPXpLuQtwQv5LuQdx4dspJdyFmLO0/SXchZnwyP01fheekuxAzprqYdBdiRkm32TY1LZsr1JPuRKx4FDnGx3Al6ELSfYgVZVtXXpPuRKyYiZzGtvbmdK7EdAD1WOL0AsuGpqzpnLBKuhdxIq9xnC0l3YsY0SxwnMKyKn2xdTiE66S7ER/KUwUOIcvO8FvgOM5pJd2N+LCEVoYTH5LuRnzABBk2M+VnRFC3mc0kvnBoDXIOs3pNKimIoDxPuiNx4dHREUExf/ItAxP3zUb8OO3pxDvpa373Orz+KhKCy6NX0ttgef8jKGnYxnBilGBlPh0IDCi4GVmCnBiZotLKKTkseP8VWYKcHE7kN79tQXxuJdOnW6KC3Tx09E7ITTSnsqI4LHgO3wtyeoHebJKeZYVjYgADL8gJyvDwsPJUUOCYMpFtmwc25pVyeDMbWlalxIAJzeW+ZN/GUEKmvpQha+25kly3bodViRAsUAZFEpFrlNlIteVFn+Ds8IysywILTjCXe5ePCc6d6JM7xqzgr0Fqis7xM5sFL5jLDR1CUKOMzCN+JjLhJfDmCxfJybTwGmQlk/hArEwoJ4MypVDbMOEmcnXb9/TUkpth0hobi9BnA2cq9UzEpG1GDii8ErktPh4ePWLSymdynbopSni8QqeClpi0xoavz1VIzCtQnqJMHolsOPvci0+HCgmHROGwMoZ1wtCmYsI1UeHMrEPlyG42fesq331mlGCFs4f0wS5/DJlZiH/wiNmUfPHXIcfKaa8yiuM5mVqHvi0Ny5x7xrsWsaWBCIDC9P5z+AgVFEcIdArYF3LQnH4n1qubAgUXukY9qPgRMTvzVIeDGDqelxcCig4bB6IkJxLtvjgBQ11PrFc3xbsYOb72rgUUtdMbwXeHVyFysETQ9/N0eK7RXaEOGZVoCSPt56lwarP7DjEs6HqJjunnckCRlQO0aycyWk/BUpTZMKc4Qxr+T2pTX9mIzPzXtVlBl+n04UuQhGOGYW5eEEIHMB40tmZpDlEs0SrNT+GwYmkw5oXQgVmcc2PFW/iYDWi/j5VNgaFJivA4oLcQNeaGEKI5ONhTaGp0kZHUPoX1YdA+FZ2R6CkMqeX/o2zr5w4JF9uTEW/wo2r//+rVv2HcaNeqbu/c65l4hmBx8TFabFRgqKYF3Ni6dx3GfXdjfYBde3z+M+I5X99u4L86E6DyvGk0YujflWi4HgDAqp4dPYzV7yeFOnCm8jxI2VTtuCowDbD4mR6coxedUvAwxc4N+nUr9EfAVHmw+7VPw8tC+6IFJ6rqXd2vW2HLow7xVvufv6ETXXRbE31hSuZpQ7V4BHX0D42LnX5twvNHv5si+k5jcYPuXY8x4H2YbvHiVsVOr+12RwawLGCcGqoNmqbW7bp5BcbA2FMEo2q71znDszjuNHrtrVvtjuAngWWahmGc9XwTbGsu/5XFifECGlGVcFRRl4Fl8N5ms1jsdrvFYrMZjTzegI/hCwvzQsODP2ksaue8XpoYQo7bHZxusOvBYKqIwR4q+jF4A5mZcGaa3qTW+0EW5EbpmaU+xr1adcNb/jiZBgUTkkK00EvVW1Rr/cZP3AhSZGnCKOK1VnOr1cmkizGZVKtubdvu9xrnVugJ9K3r3E/6gSepkXQvYgQZwm3S3YgPRSgBeWOTdDfOone1jR8ZyOqmxVVEUKxZv4UXv6JrokX4u71NBDULVK/9jglchAafToJFz1LN2pVfsoAErTR6QoQNWj/GRbO006t1+RO2ZOyZvAHSakWLH1iYAc89r1qK4wYMKjwLqTw4F6OytAfVENilc4YijIgyVZHyBIa36UI1U9tu2+32Fumc7sZDQYW1F+rwtzEJsZkAA2xSmILaozgCQd+xyN5LUvSnSUR4CEYoOuypAOzSzA+h7QEjwuI0cPTET6i043jzwdfSOz8PQDlFtMbOUkPcLKAu3FD0NJ6AatqH7wAYSe2QLaHDKNPwAyhj1HXbjSO9UktT6vBCjBt9ZF5IFIVDqPZfBVAZMmS4Eowvt+J2wTZDF4D78Wz/gCIPg4PJrx+7Q/cXYIHkjGFW+2dcH96L8QDw7nac/fACamrL8BZVF2dKIXpoz2KCksYktlDTHUT8ABfQEpRoNR9mOLgwwOjqlE4imAD+Qqjmh3cPwcQRerx1PrSgwifLvKNoIoL+5rDhdhKGCfhfzmykHeNt18QmJcxT5Q0S+W7vyls0ttD6f3zwk8ic6/TdrmeQjVELx4bAhNZ1exwcphnj7QJtC3bbZ8cEb24jNDrjS6l1UjPCcL3BoenefkGp6VijW9UyVPAXBzAuh6fG8KV/i76KjwnF4s/aIAXHobo4M3r9PtMpwOAk+YU4Molf+z2I+Ft0XAt4yRPcWoHrvmkSd9yv8gAYadiXca29EzeB516/6wtjKndhAOh5RtQBjGJynhNtFNIKE/C7H/abfvqiTq9dm2wMnD62wCg8IxLdyd96MP47aDKSqje9zQQGhNi5nz3dhhQAzhXvRuSEEc6LW0DtRs5O967ebL0S43aV/O5p8WkEyXv4Ampvz/NGBPBfSHDTx9tIO/zMqx6Jos4iDS4Dn8t3JyMDD0VUZ6v4QNsePB96jQ+4ATS9Tyk+pJa8NOlXvJyqCy9ysE2lpjE+y7ffnzF5NJ97p71Co2pYBtj9zxwuRTFYZZPuYkPmJgKcrZtFd4JOuPV7jR8k+Lg/gfRUi0/JCejbotOvIvvFG8Bj7swecocbFDLDENkyo4FmStA5lyD9GdTRDBU71hQnN8auZ42g+ej/vg0Ko2K4WP3sKeGG7Oqo2k976q3Yg9LrAwIA1cOWpeq6NQLXRcdqd5sRbxJ3iQwuSqhC02p5XbefvNq+FHBNbX29EoYVAj7wvulediY6pcAZmj46LEQGsIpGFB0havdx1ibp/mXIkCFDhgwZLsDLEIOlS1giWDk2xIDF+x98kDsCWboqKIqM4f0jY3j/yBjePzKG94/TDCtDab2WWv+k5eot1DY9OvCIYXn98Craslwqybb9Pd9fJTT7fIL4DF82Tx4u962l+adm26Tt9KGFn/15W89eErw2OsKw+WSXNGV/i64i7ivjSY6AMA21ftLQswG5u3ydL8lUW11zVngg58PVLC0MK07pcEdwcGt3cDE5qS9TaNGtpzq3v+5bk4/aagqaArNhc5ZgnYHwGOIR0BVBE0Ut6K/ml7J4w58M1UQo49t2/VoXn8pxWyU85IkgzDAvKKItvn7NZ7N5XidVZjibXMxG6j6ErvZu4Ss+/Xolc03RZPk7/wDbvk3l4zJKCSHMcDb4nB1uuWqSiemTInUSOLqSFSnn4d/YLg2+5weDJZF7eENFeJJBmGElfAtbi9ylWyAXQD6RaUpVRpprFOdyuFZCmcxUO3FP+7PHJ9ev+29JpSf6Rk+y9LjTbcnHk69l8jNDCa89/zpkUhVBp2qy4FksnLl6nhQaSr562c8MSS+DiUmKdxwKJYTfHgEbquTLJv0NQ1K84zBmfhWac7VKtLtgWKAZtsg0LQVvsYc8twzvhGE9xJBImMOH8Y/C1+mm6WZYl2YP+afl6ytZeXuG5JpyzZeqxPKIkYtay9Kj31bnUsqwMv8uyFB4KQhciKGEVVowL4m/L9C3JZdnSxu1FfZt08ewnndEvyrAHgdrqREvTmQPXoYhFfdgi0pEfaeO4drGE1FXoH4WSyUxwvBLoHwcqrFDe/Sh7qs8v20qZykp1ayL8vJh9qfZXPu6ZM/QV9/4bnYiuw/RlORghaPZ3++obXMtpNDSDAe4Dq72GMiWStiW7tU3coHYO+r78KiOHbxuH7ICabSlz3gUpgfb8RJhGKhvNDWxnT2IsryGR791+OoUMpRIMWrKrh4xPKjvikMZneDHkIJLIUPs7nQ6LD9iSIjoss/18GHyY4lqm0aGpGQFHSocMfTVt90ikdNhkuI4Sw+VhUohw2MVdsxw5lvXcmFvcjBwtctwOb20MlTocjL1o/iI+AjhDQsa6rPYBOkK/dUpZPiNTSldQzV/lLjwE4jfT+izVKUgogXoqrMkxZE8wxXFkPDR3oJ30lTjjhg++KInYljmpJj1flBflmJKVBvNkLgCrvSFHaK0KgRlq2iG0r4i2T7IwI9J7SDtE6/M4VvQNnmGxIWTWqrlApHNQuH7aSnKAvLgRwzpynkt6rFfxUsoTJ8+BRu3Tcc6JIXE/UzELCgUqwg4RtCma/GI4VdQwzJc13k98B/rCm4riBKS5skzfKYzorm8TQU/igNdI3oQZhjUPObsdeib5g7VVreXdWy5kmdIMvd28OPMFgX0q4fhk/OKFue0JIqDEMPyQMSQo3sSTaEUtLWnKPJf2eJh7yop+DnQQ2fLsydOLtja6wMx/M1HiFaoDX4EcVzk4s9qWirY4vM7kbYS+lTSOe9mJEGIUS5fsYF7Tds4cLwXwRhIvKQX2Ku95aPMkVzK2ZTn3eNbIJb918pGd4rKlPhuh51Km2H8KRGdZSfuk2NCE+fVON1JfIMvNjygIEGQzxTAYwIrUXBWzPoJjOcVG4XDM2TIkCFDhgwZUo//AJI6Kr3uGJaeAAAAAElFTkSuQmCC" alt="Java">
+            <h3>Java Programming</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-java/';">Join Now</button>
+        </div>
+
+        <!-- Python Course -->
+        <div class="course-item">
+            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0PDg4OEA4RDw0NDw0NDRAOEBANDQ4OFREWFhYRFRUZHSggGBolGxYYIjMiJisrOi4uFx8/OzcsNygvLisBCgoKDg0OGhAQGyslICYvLS0rLTAtLS8tKzAtKy0tLS0vLS03Ky0tLS0tLS0tLS0tLS0rLS0tLS0tLSstLS0tLf/AABEIAOEA4QMBEQACEQEDEQH/xAAbAAEAAQUBAAAAAAAAAAAAAAAAAQIEBQYHA//EAEMQAQACAQIBBwYJCQkBAAAAAAABAgMEEQUGEiExQVFhE1JxgZHRByIyVHKTobHBFSM0QlN0grPiFCQzQ0SSorLhFv/EABsBAQACAwEBAAAAAAAAAAAAAAABBAIDBQYH/8QAMhEBAAEDAQUGBAYDAQAAAAAAAAECAwQRBRIhMVETMkFhcaEUQlKBIjORscHRFSPwBv/aAAwDAQACEQMRAD8A7iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADFcc5QaXRVic1/j2jemOkc7LfxiOyPGdobbVmu5P4Wq5ept82l674Sc8zMYdPjpHZOa1skz6q7be2VynCj5pU6s2flhjMnL7ic9V8Vfo4o/GZbPhLbD4u55Ipy/4nHXfFb6WKPwmEfCW/MjLueTJ6H4S80TEZ9NS8ds4bWx2j+G2+/thrqwo+WW2nMn5obtwPj+l1tZthyb2rETfHb4uWnpr3eMbwp3LVVueK3bu018mUa2wAAAAAAAAAAAAAAAAAAAAABxKnleJa+Im22TVZZjeemMdOmdojurWOrwdnhZt+jjcbtz1bXyh5B4MOkyZsGTJ5TBS2S0ZJrauStY3t1RG07RKray6qq4irxWruLTTTM0+Dnkr6ihCUShK44br8umzY8+KdsmOd47rR20nwmOhhXTFUaSyoqmmdYd50morlx48tfk5aUyV+jasTH3uPMaTo7ETrGr2QkAAAAAAAAAAAAAAAAAAAABwLQazJgy482OdsmK0Xrv0xvHZPhMdHrdyqmKqd2XDpqmmrWG08c5e5dTpraeuCMPla8zLfynlN6z11rG0bb+von1qtvEiire11WrmVNVOmjTVtVRMoSpEolA7zyd/QdH+66b+VVx7nfn1de33Y9GRYMwAAAAAAAAAAAAAAAAAAGK1HKTh+O00vq8UWjomIvFpie6dupsizcnjES1TetxwmYeX/ANZwz53j9s+5l2Fz6ZR8Rb+qGo/kjk389t9b/StdpkfT7K3Z4/X3PyRyb+e2+t/pR2mR9Psdnj9fdH5H5N/PbfW/0naZH0+ydzH6+7RNVFIyZIpO+OL3jHPXvSLTzZ9my5Gukaqc8+DyBTMoHdeCammPQ6LnTtvpdPt0TPViq8/mZVuxV/snnMu3Zt1V0xp5Lv8AKWHzp/22VI2rizPe9pbvh7nRc48lbRvExMd8L1Fym5TvUzrDTMTE6SqZoAAAAAAAAAAAAAAAAcz5f8pr3y30eG81w45mme1Z2nLftpv5sdUx2zu6WLYiI36ufg52TfmZ3KeXi0dcU0AhCUShKJEoQKZlCUSDtGn/AEHh/wC64P5VHif/AEHOn1q/h6PB7v2h5y846D20WqnHaJ3+LPRaPDv9K7g5dWPc1+Wef9tN61FdPm2GJeyidXLSAAAAAAAAAAAAAAC04tq/IafPn/Y4smSI75rWZiPayop3qopYV1btMy4Pa0zMzM72mZmZnrmZ65dxxeakEISiRKJlAhCVMoSiQRETPREbzPRER1zM9UImdE6O36nB5LBpMPbixVxz/DStfweI29XEzR9/4ejwo0ifstJeedBTKBsPDMnOw074jmz6p2ey2dd7TGomfT9ODlX6d25MLpeaQAAAAAAAAAAAAAGv8vcnN4Zqp74xV9VstIn72/GjW7DRkzpblxqXXck26N0ap0UyJVYsV72ilKWveeqtKze0+iI6WMzEc0xGvJfRyf4hP+i1H1OSPwa+1o6wz7KvpJPJ7iHzLUfU5PcdrR1hPZV9JUzye4j8y1H1OT3I7WjrCeyr6S9NNyZ4je1Y/sWfbeN+dScdfXNtohE3qI8Uxar6N35KcivI5KanV8zn4p5+PHXaa0tHVa9o6JmOyOnpiOlSv5URTPHSPGVu1j8YmWc12o8peZj5MdFfQ8Jn5PxF6ao5Rwh3rFvcp0W0qbciZQlm+Bz+anwvP3Q9TsWdceY6TP8ADm5cf7PsyLrqoAAAAAAAAAAAAADXuX9d+Garw8jb2ZqS3435sNGTGtuXHK9ft+51pcqFc9m/ft0dPcwZvfhmivqNRjwU+XkvFInza9MzafREbsa6t2nWWVFO9Vo67odHptBijFhpHOnab2/XvPnXt2+h5vP2lFqdJ41eEdHZsY8acORbiGXsmIjwiPxcSraeRM84j7LkY9Ciddl877IYxtLJ4fi9oT2FHRM8QyzPyvsr7mP+TyojWavaGXw9voo/t+Xzv+Nfcn/J5One9oPh6Ojxy6i9/lWmenq6o9iteybt3v1TLZRbpp5Q8t2ieLZCndE8kxzItu1TEwzhneBR+at43n7oeo2JGliZ85/aHMzPzPsyTsKoAAAAAAAAAAAAADHcodJOfR6rFEb2yYcsU+nzZmv27M7dW7XEsLtO9RMOE7u04xMoS2/4LcMW197T0+T0+Sa+FpvSu/smfaqZc/g+61iRrXr5N3zX51rT3zP/AI+b5F2bl2quer0tFO7TEPOWnVmiUap0UmqdEShKmTVKJRqnRTJqnRCBsfCsfNw0753t7Z3j7HstmW5t41MT48f1cnIq3rkrxfaAAAAAAAAAAAAAAAHGOW/A7aPV3mK/3fPa2TDP6sbzvbH6Yn7NnVx7u/T5w5d+3uVeUtdbmluvwUfpuf8AdrfzKKmZ3IW8TvS298yq5y9NHJEoSgSpQlEyJUyhKmZQlEiVxoNJOW8Rt8SPlz4d3pXcHDqybmnyxzn+Gm/ei3T5+DZoh7OI0jSHHSkAAAAAAAAAAAAAAAW3ENBh1GO2LNjjJjt11t398T1xPjDKmqaZ1hjVTFUaS1LN8Gmim0zXNqKRPVXnY7RHoma7rMZdfjEK84lPWWT5N8kMGgy3zY8uW9r45xTGTmbRHOid+iI6ehqu35uRpLZasRbnWJUS+eVc5d6OSEJUyhLIxj0e0b3nft6be526bOzdI1q95U5qyOh5PR+fPtt7mXY7M+r3k38jojyWi8+fbb3I7HZn1e8p38nouKcKwTETHOmJiJj43XErtOycWqIqjXSfNqnKuxOkqo4Tg7pnwm07M6dkYsTrpP6yicu71XmPHWsRFYiIjqiI2h0KLdNFO7TGkK8zMzrKtmgAAAAAAAAAAAAAAAAAABrDwU85diOSmWLJEiUISuNNocmWJmNorHRvbeN58F7F2fdyKd6nSI82m5kU250lbZsdqWmto2tCres12a5orjjDbRXFcaw2bR/4WP6FP+sPa4v5FHpH7OPc78+r2b2AAAAAAAAAAAAAAAAAAAAADWtRjmlrVnsn2x2S8Pk2ptXaqJde3VFVMTDylobEShKmZBluGa/HXHzLzzZrM7TtMxMTO/Y9DszaFm3Z7O5Okxr9/FRyMeua96nix/EdRGXJNqx0bRWvfLlZ+RGRfmqiOHKPNZsW5t0aS2LTUmtKVnrrWsT6Yh6+xTNFqmmfCI/Zyq51qmXq2sQAAAAAAAAAAAAAAAAAAAAFvqtJTJHT0THVMdcKmVhW8iNKufhLZbu1W54MXm4Vlj5O1o9PNn7XBu7Gv09zSfb/AL9V2nLonnwW9tFmj/Lt6tpVKtn5MfJLdF+3PiojRZv2dvZsiMDJn5JT29vq9cfCs89dYr9KY/Bvt7IyaucRHrP9asKsu3HmyWh4XTHMWtPOvHV0bRX0Q7OHsu3YmK6uNXtCneyarkaRwhkHVVgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH//2Q==" alt="Python">
+            <h3>Python Programming</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-python/';">Join Now</button>
+        </div>
+
+        <!-- AI Course -->
+        <div class="course-item">
+            <img src="data:image/jpeg;base64,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" alt="AI">
+            <h3>Artificial Intelligence</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-AI/';">Join Now</button>
+        </div>
+
+        <!-- Data Analytics Course -->
+        <div class="course-item">
+            <img src="https://png.pngtree.com/png-vector/20190302/ourmid/pngtree-analytics-icon-design-template-vector-isolated-png-image_745933.jpg" alt="Data Analytics">
+            <h3>Data Analytics</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-data/';">Join Now</button>
+        </div>
+
+        <!-- Full Stack Course -->
+        <div class="course-item">
+            <img src="data:image/png;base64,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" alt="Full Stack">
+            <h3>Full Stack</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-stack/';">Join Now</button>
+        </div>
+
+        <!-- UI/UX Course -->
+        <div class="course-item">
+            <img src="data:image/png;base64,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" alt="UI/UX">
+            <h3>UI/UX Design</h3>
+            <button style="background-color: #0a1129; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;" onclick="window.location.href='https://skola-tech-acadeemy.github.io/home-UI-UX-/';">Join Now</button>
+        </div>
+
+    </div>
+</section>
+
+    
+        <!-- Contact Us Section -->
+        <div class="contact-us" id="contact">
+            <h3>Contact Us Today</h3>
+            <p><strong>Visit:</strong> 257, Sri Ram Complex,a Gandhiji Main Street, Thirunagar 8th Stop, Madurai-6</p>
+            <p><strong>Phone:</strong> 9952620470</p>
+            <p><strong>Follow Us:</strong>
+                <a href="https://www.instagram.com/skolatech_academy/" target="_blank">
+                    <img width="25" height="25" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="Instagram" />
+                </a>
+                <a href="https://www.facebook.com/people/SkolaTech-Academy-it-Services/61558685596890/" target="_blank">
+                    <img width="25" height="25" src="https://img.icons8.com/ios/50/facebook--v1.png" alt="Facebook" />
+                </a>
+                <a href="https://wa.me/919952620470" target="_blank">
+                    <img width="25" height="25" src="https://img.icons8.com/ios/50/whatsapp--v1.png" alt="WhatsApp" />
+                </a>
+                
+                <a href="https://in.linkedin.com/in/skola-tech-academy-68a859309" target="_blank">
+                    <img width="25" height="25" src="https://img.icons8.com/ios/50/linkedin.png" alt="LinkedIn" />
+                </a>
+                
+            </p>
+        </div>
+<div> 
+<footer>
+    <p>&copy; 2024 Skola Tech Academy and IT Services. All rights reserved.</p>
+</footer>
+</div>
+    
+    </body>
+    </html>
