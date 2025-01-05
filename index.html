@@ -434,11 +434,47 @@
         </style>
 </head>
 <body>
-    <b><div class="logo"> <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/telephone-handset.png" alt="telephone-handset"/>Ph:9952620470</div><div class="logo"> <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/gmail-logo.png" alt="gmail-logo"/>Gmail: skolatechacdemy@gmail.com</div></b>
+    <div class="top-bar">
+        <div class="contact-info">
+            <div class="contact-item">
+                <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/telephone-handset.png" alt="telephone-handset"/>
+                <span>Ph: 9952620470</span>
+            </div>
+            <div class="contact-item">
+                <img width="25" height="25" src="https://img.icons8.com/3d-fluency/94/gmail-logo.png" alt="gmail-logo"/>
+                <span>Gmail: skolatechacdemy@gmail.com</span>
+            </div>
+        </div>
+        <div class="join-now">
+            <button style="background-color: #1e90ff; color: white; padding: 10px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease;" onmouseover="this.style.backgroundColor='#1c86ee'; this.style.transform='scale(1.1)';" onmouseout="this.style.backgroundColor='#1e90ff'; this.style.transform='scale(1)';" onclick="window.location.href='https://thirulingeshwar.github.io/login-page/';">Login</button>
+        </div>
+    </div>
+    <style>
+        .top-bar {
+            background-color: #090711;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .join-now button:hover {
+            background-color: #45a049;
+        }
+    </style>
     <!-- Header Section -->
     <header>
         
-        <div class="logo">skola tech academy and it services</div>
+        <div class="logo">skola tech academy & it services</div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
